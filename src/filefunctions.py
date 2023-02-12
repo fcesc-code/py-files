@@ -9,7 +9,7 @@ input_file_name = 'rome_data.csv'
 input_directory = 'py-files\\data\\confidential'
 input_path = os.path.join(cwd, input_directory, input_file_name)
 output_totals_file_name = 'rome_totals.csv'
-output_totals_directory = 'py-files\\results'
+output_totals_directory = 'py-files\\data\\results'
 output_totals_path = os.path.join(cwd, output_totals_directory, output_totals_file_name)
 
 
