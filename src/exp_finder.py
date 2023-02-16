@@ -10,6 +10,7 @@ appendixes = [
 norms = [
   'ISO',
   'EN',
+  'EN ISO',
   'ANSI',
   'AINSI',
   'ASTM',
@@ -25,7 +26,7 @@ acronyms = r'\s[A-Z\/]{2,}\s'
 def find_appendixes(str):
   result = set()
   for app in appendixes:
-    exp = r'{}\s[a-zA-Z0-9]+'.format(app)
+    exp = r'\s[a-zA-Z0-9]+\s{}\s[a-zA-Z0-9]+\s'.format(app)
     matches = re.findall(exp, str)
     for match in matches:
       result.add(match.strip())

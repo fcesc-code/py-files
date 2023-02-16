@@ -3,6 +3,7 @@ import docx
 import csv
 import os
 import exp_finder as f
+from docx.shared import Cm
 
 # constants 
 cwd = os.getcwd()
@@ -44,9 +45,11 @@ for tab in tabs:
   max_rows = ws.max_row
 
   heading = doc.add_paragraph(tab.upper())
-  heading.style = styles['Normal']
+  heading.style = styles['Heading 1']
   table = doc.add_table(rows=0, cols=3)
-  table.alignment = docx.enum.table.WD_TABLE_ALIGNMENT.CENTER
+  table.alignment = docx.enum.table.WD_TABLE_ALIGNMENT.LEFT
+  table.allow_autofit = False
+  table.width = Cm(17.43)
   previous_code = ''
   previous_title = ''
 
@@ -56,7 +59,7 @@ for tab in tabs:
     if (code == 'None'): continue
     position_title = 'B' + str(i)
     title = str(ws[position_title].value).strip()
-    position_text = 'F' + str(i)
+    position_text = 'G' + str(i)
     text = str(ws[position_text].value).strip()
     position_lsc2 = 'C' + str(i)
     lsc2_text = str(ws[position_lsc2].value)
@@ -74,10 +77,13 @@ for tab in tabs:
       cells = table.add_row().cells
       if (code != 'None' and code_changed): 
         cells[0].text = code
+        cells[0].width = Cm(2.23)
       if (title != 'None'): 
         cells[1].text = title
+        cells[1].width = Cm(3.77)
       if (text != 'None'): 
         cells[2].text = text
+        cells[2].width = Cm(11.44)
       else:
         cells[2].text = ''
     i += 1
